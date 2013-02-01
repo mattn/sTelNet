@@ -2958,12 +2958,8 @@ Usage(HANDLE stdo, LPTELNET_STRUCT lpts, BOOL mode)
 #endif
 	"        -term=[端末名]          端末名(規定値 kterm) \n";
   CHAR *keyhlp =
-#ifdef __GNUC__
-	"      CTRL-F1  : ヘルプ表\示\n"
-	"      CTRL-F3  : 待機ソ\ケット作成\n"
-#else
-	"      CTRL-F1  : ヘルプ表示\n" "      CTRL-F3  : 待機ソケット作成\n"
-#endif
+	"      CTRL-F1  : ヘルプ表示\n"
+	"      CTRL-F3  : 待機ソケット作成\n"
 	"      CTRL-F4  : 強制終了\n"
 	"      CTRL-F5  : 漢字コード切替\n"
 	"      CTRL-F6  : ローカルエコー切替\n"
@@ -3329,11 +3325,7 @@ main(int argc, char *argv[])
 	ts.sock = socket(AF_INET, SOCK_STREAM, 0);
 	if (ts.sock == INVALID_SOCKET)
 	{
-#ifdef __GNUC__
-	  strcpy(temp, "ソ\ケットが確保できません\n");
-#else
 	  strcpy(temp, "ソケットが確保できません\n");
-#endif
 	  WriteFile(ts.stdo, temp, strlen(temp), &ret, NULL);
 	  goto ErrHandle;
 	}
