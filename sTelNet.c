@@ -1,32 +1,32 @@
 /******************************************************************************
 * sTelNet - Small Telnet Program For WIN32
-*                                              2001/06/22 Created By ‚Ü‚Á‚Â‚ñ
+*                                              2001/06/22 Created By ã¾ã£ã¤ã‚“
 *------------------------------------------------------------------------------
 * vim:set ts=4 nowrap:
 ******************************************************************************/
 
-//#define DEBUG_TXT             /* o—Í•¶š‚ÌƒfƒoƒbƒO   */
-//#define DEBUG_CTX             /* §Œä•¶š‚ÌƒfƒoƒbƒO   */
-//#define DEBUG_ESC             /* ƒGƒXƒP[ƒv‚ÌƒfƒoƒbƒO */
-//#define DEBUG_NTA             /* NTLM”FØ‚ÌƒfƒoƒbƒO   */
-//#define DEBUG_RCV             /* óMƒf[ƒ^‚ÌƒfƒoƒbƒO */
-//#define DEBUG_SND             /* ‘—Mƒf[ƒ^‚ÌƒfƒoƒbƒO */
-#define DEBUG_SCK				/* ƒ\ƒPƒbƒg‚ÌƒfƒoƒbƒO   */
+//#define DEBUG_TXT             /* å‡ºåŠ›æ–‡å­—ã®ãƒ‡ãƒãƒƒã‚°   */
+//#define DEBUG_CTX             /* åˆ¶å¾¡æ–‡å­—ã®ãƒ‡ãƒãƒƒã‚°   */
+//#define DEBUG_ESC             /* ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã®ãƒ‡ãƒãƒƒã‚° */
+//#define DEBUG_NTA             /* NTLMèªè¨¼ã®ãƒ‡ãƒãƒƒã‚°   */
+//#define DEBUG_RCV             /* å—ä¿¡ãƒ‡ãƒ¼ã‚¿ã®ãƒ‡ãƒãƒƒã‚° */
+//#define DEBUG_SND             /* é€ä¿¡ãƒ‡ãƒ¼ã‚¿ã®ãƒ‡ãƒãƒƒã‚° */
+#define DEBUG_SCK				/* ã‚½ã‚±ãƒƒãƒˆã®ãƒ‡ãƒãƒƒã‚°   */
 
-#define SUPPORT_WSK2			/* Winsock2 ‚ÌƒTƒ|[ƒg  */
-#define SUPPORT_SERV			/* ƒT[ƒo‹@”\‚ÌƒTƒ|[ƒg */
-#define SUPPORT_SWAP			/* §Œä—p‰æ–Ê‚ÌƒTƒ|[ƒg */
-#define SUPPORT_NAWS			/* NAWS‚ÌƒTƒ|[ƒg       */
-#define SUPPORT_GPMP			/* GPM‚ÌƒTƒ|[ƒg        */
-#define SUPPORT_SYMB			/* SYMBOL‚ÌƒTƒ|[ƒg     */
-#define SUPPORT_PIPE			/* ƒpƒCƒv‚ÌƒTƒ|[ƒg     */
-#define SUPPORT_ICON			/* ƒAƒCƒRƒ“‚ÌƒTƒ|[ƒg   */
-#define SUPPORT_JPNK			/* “ú–{Œê‚ÌƒTƒ|[ƒg     */
-#define SUPPORT_NTLM			/* NTLM‚ÌƒTƒ|[ƒg       */
-#define SUPPORT_SPRT			/* ƒVƒŠƒAƒ‹‚ÌƒTƒ|[ƒg   */
-//#define SUPPORT_RBUF          /* óMƒXƒv[ƒ‹ƒTƒ|[ƒg */
+#define SUPPORT_WSK2			/* Winsock2 ã®ã‚µãƒãƒ¼ãƒˆ  */
+#define SUPPORT_SERV			/* ã‚µãƒ¼ãƒæ©Ÿèƒ½ã®ã‚µãƒãƒ¼ãƒˆ */
+#define SUPPORT_SWAP			/* åˆ¶å¾¡ç”¨ç”»é¢ã®ã‚µãƒãƒ¼ãƒˆ */
+#define SUPPORT_NAWS			/* NAWSã®ã‚µãƒãƒ¼ãƒˆ       */
+#define SUPPORT_GPMP			/* GPMã®ã‚µãƒãƒ¼ãƒˆ        */
+#define SUPPORT_SYMB			/* SYMBOLã®ã‚µãƒãƒ¼ãƒˆ     */
+#define SUPPORT_PIPE			/* ãƒ‘ã‚¤ãƒ—ã®ã‚µãƒãƒ¼ãƒˆ     */
+#define SUPPORT_ICON			/* ã‚¢ã‚¤ã‚³ãƒ³ã®ã‚µãƒãƒ¼ãƒˆ   */
+#define SUPPORT_JPNK			/* æ—¥æœ¬èªã®ã‚µãƒãƒ¼ãƒˆ     */
+#define SUPPORT_NTLM			/* NTLMã®ã‚µãƒãƒ¼ãƒˆ       */
+#define SUPPORT_SPRT			/* ã‚·ãƒªã‚¢ãƒ«ã®ã‚µãƒãƒ¼ãƒˆ   */
+//#define SUPPORT_RBUF          /* å—ä¿¡ã‚¹ãƒ—ãƒ¼ãƒ«ã‚µãƒãƒ¼ãƒˆ */
 
-/* GNUC ‚Å‚ÍŒ»ó NTLM ‚ÍƒTƒ|[ƒg‚Å‚«‚È‚¢ */
+/* GNUC ã§ã¯ç¾çŠ¶ NTLM ã¯ã‚µãƒãƒ¼ãƒˆã§ããªã„ */
 #ifdef __GNUC__
 # ifdef SUPPORT_NTLM
 #  warning "Can't support NTLM on GNUC"
@@ -73,7 +73,7 @@
 typedef unsigned char U_CHAR;
 #endif
 
-/* ƒL[ƒAƒTƒCƒ“\‘¢‘Ì */
+/* ã‚­ãƒ¼ã‚¢ã‚µã‚¤ãƒ³æ§‹é€ ä½“ */
 typedef struct
 {
 	WORD key;
@@ -82,47 +82,47 @@ typedef struct
 }
 KEY_STRUCT, *LPKEY_STRUCT;
 
-/* “ú–{Œêí—Ş\‘¢‘Ì */
+/* æ—¥æœ¬èªç¨®é¡æ§‹é€ ä½“ */
 typedef struct
 {
-	CHAR *name;					/* í—Ş–¼ */
-	CHAR key;					/* í—ŞƒR[ƒh */
+	CHAR *name;					/* ç¨®é¡å */
+	CHAR key;					/* ç¨®é¡ã‚³ãƒ¼ãƒ‰ */
 }
 JAPANESE_STRUCT, *LPJAPANESE_STRUCT;
 
-/* ’ÊM—p“à•”\‘¢‘Ì */
+/* é€šä¿¡ç”¨å†…éƒ¨æ§‹é€ ä½“ */
 typedef struct
 {
-	SOCKET sock;				/* ƒ\ƒPƒbƒg */
-	HANDLE stdi;				/* •W€“ü—Íƒnƒ“ƒhƒ‹ */
-	HANDLE stdo;				/* •W€o—Íƒnƒ“ƒhƒ‹ */
-	HANDLE alto;				/* ‚Q‰æ–Ê–Ú */
-	USHORT serv_port;			/* ƒT[ƒoƒ|[ƒg */
-	BOOL lock;					/* ƒ\ƒPƒbƒgƒƒbƒN */
+	SOCKET sock;				/* ã‚½ã‚±ãƒƒãƒˆ */
+	HANDLE stdi;				/* æ¨™æº–å…¥åŠ›ãƒãƒ³ãƒ‰ãƒ« */
+	HANDLE stdo;				/* æ¨™æº–å‡ºåŠ›ãƒãƒ³ãƒ‰ãƒ« */
+	HANDLE alto;				/* ï¼’ç”»é¢ç›® */
+	USHORT serv_port;			/* ã‚µãƒ¼ãƒãƒãƒ¼ãƒˆ */
+	BOOL lock;					/* ã‚½ã‚±ãƒƒãƒˆãƒ­ãƒƒã‚¯ */
 
 	BOOL vt100;					/* vt100 */
-	BOOL mouse;					/* ƒ}ƒEƒX */
-	BOOL ntlm;					/* NTLM”FØ */
-	CHAR *term;					/* ’[–––¼ */
-	BOOL insert;				/* ‘}“üó‘Ô */
-	BOOL cursor;				/* ƒJ[ƒ\ƒ‹ó‘Ô */
+	BOOL mouse;					/* ãƒã‚¦ã‚¹ */
+	BOOL ntlm;					/* NTLMèªè¨¼ */
+	CHAR *term;					/* ç«¯æœ«å */
+	BOOL insert;				/* æŒ¿å…¥çŠ¶æ…‹ */
+	BOOL cursor;				/* ã‚«ãƒ¼ã‚½ãƒ«çŠ¶æ…‹ */
 #ifdef SUPPORT_JPNK
-	CHAR kanji;					/* Š¿šó‘Ô */
+	CHAR kanji;					/* æ¼¢å­—çŠ¶æ…‹ */
 #endif
-	BOOL echo;					/* ƒGƒR[ó‘Ô */
-	CHAR line;					/* ‰üsó‘Ô */
-	INT curp;					/* Œ»İs */
+	BOOL echo;					/* ã‚¨ã‚³ãƒ¼çŠ¶æ…‹ */
+	CHAR line;					/* æ”¹è¡ŒçŠ¶æ…‹ */
+	INT curp;					/* ç¾åœ¨è¡Œ */
 #ifdef SUPPORT_JPNK
-	CHAR ime;					/* IMEó‘Ô */
+	CHAR ime;					/* IMEçŠ¶æ…‹ */
 #endif
-	BOOL bell;					/* ƒxƒ‹ó‘Ô */
+	BOOL bell;					/* ãƒ™ãƒ«çŠ¶æ…‹ */
 #ifdef SUPPORT_NAWS
-	CHAR naws;					/* NAWSó‘Ô */
+	CHAR naws;					/* NAWSçŠ¶æ…‹ */
 #endif
 }
 TELNET_STRUCT, *LPTELNET_STRUCT;
 
-/* Š¿ší—Ş */
+/* æ¼¢å­—ç¨®é¡ */
 #define KANJI_NONE	0
 #define KANJI_START 1
 #define KANJI_SJIS	1
@@ -131,14 +131,14 @@ TELNET_STRUCT, *LPTELNET_STRUCT;
 #define KANJI_END   3
 #define KANJI_KANA	4
 
-/* sí—Ş */
+/* è¡Œç¨®é¡ */
 #define LINE_NONE   0
 #define LINE_CR     1
 #define LINE_LF     2
 #define LINE_CRLF   3
 #define LINE_AUTO   4
 
-/* NAWSí—Ş */
+/* NAWSç¨®é¡ */
 #define NAWS_OFF    0
 #define NAWS_ON     1
 #define NAWS_AUTO   2
@@ -147,7 +147,7 @@ TELNET_STRUCT, *LPTELNET_STRUCT;
 #define SYMBOL_SC	1
 #define SYMBOL_GL	2
 
-/* F’è” */
+/* è‰²å®šæ•° */
 #ifndef FOREGROUND_WHITE
 #define FOREGROUND_WHITE (FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE)
 #endif
@@ -171,7 +171,7 @@ TELNET_STRUCT, *LPTELNET_STRUCT;
 
 #define  UC(b)       (((int)b)&0xFF)
 
-/* IME—pƒGƒŠƒA‚ÌŠm•Û */
+/* IMEç”¨ã‚¨ãƒªã‚¢ã®ç¢ºä¿ */
 #ifdef SUPPORT_JPNK
 # define RESTORE_IME(lpts,csbi) \
 	if(lpts->ime) \
@@ -199,7 +199,7 @@ typedef WINBASEAPI HWND(WINAPI * GETCONSOLEWINDOWPROC) (VOID);
 /******************************************************************************
 * Variables
 ******************************************************************************/
-/* ƒL[•ÏŠ·ƒe[ƒuƒ‹ */
+/* ã‚­ãƒ¼å¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ« */
 KEY_STRUCT ks[] = {
 	VK_END, "\x1bOF", "\x1bOq",
 	VK_HOME, "\x1bOH", "\x1bOW",
@@ -227,7 +227,7 @@ KEY_STRUCT ks[] = {
 };
 
 #ifdef SUPPORT_JPNK
-/* “ú–{Œêí—Şƒe[ƒuƒ‹ */
+/* æ—¥æœ¬èªç¨®é¡ãƒ†ãƒ¼ãƒ–ãƒ« */
 JAPANESE_STRUCT js[] = {
 	"sjis", KANJI_SJIS,
 	"jis7", KANJI_JIS7,
@@ -236,7 +236,7 @@ JAPANESE_STRUCT js[] = {
 };
 #endif
 
-/* NTLM”FØ—pŠO•”•Ï” */
+/* NTLMèªè¨¼ç”¨å¤–éƒ¨å¤‰æ•° */
 #ifdef SUPPORT_NTLM
 HINSTANCE hLibSecure32 = NULL;
 PSecurityFunctionTable ntlmFuncs;
@@ -250,7 +250,7 @@ struct _SecHandle ntlmSecHnd;
 #define SEC_SUCCESS(Status) ((Status) >= 0)
 #endif
 
-/* ƒAƒCƒRƒ“—pŠO•”•Ï” */
+/* ã‚¢ã‚¤ã‚³ãƒ³ç”¨å¤–éƒ¨å¤‰æ•° */
 #ifdef SUPPORT_ICON
 HINSTANCE hLibKernel32 = NULL;
 #endif
@@ -258,7 +258,7 @@ HINSTANCE hLibKernel32 = NULL;
 /******************************************************************************
 * Prototypes
 ******************************************************************************/
-/* ˆÈ‰ºƒ\ƒPƒbƒg—pƒ‰ƒbƒpŠÖ” */
+/* ä»¥ä¸‹ã‚½ã‚±ãƒƒãƒˆç”¨ãƒ©ãƒƒãƒ‘é–¢æ•° */
 #ifdef DEBUG_SCK
 int t_select(int, fd_set FAR *, fd_set FAR *, fd_set FAR *,
 	const struct timeval FAR *);
@@ -271,14 +271,14 @@ int t_recv(SOCKET, char FAR *, int, int);
 #endif
 
 BOOL CtrlHandle(DWORD);
-SOCKET GetListenSocket(USHORT);	/* ‘Ò‹@ƒ\ƒPƒbƒgì¬ */
-DWORD WINAPI LstnThread(void *);	/* ‘Ò‹@ƒXƒŒƒbƒh */
-DWORD WINAPI SendThread(void *);	/* ‘—MƒXƒŒƒbƒh */
-DWORD WINAPI RecvThread(void *);	/* óMƒXƒŒƒbƒh */
+SOCKET GetListenSocket(USHORT);	/* å¾…æ©Ÿã‚½ã‚±ãƒƒãƒˆä½œæˆ */
+DWORD WINAPI LstnThread(void *);	/* å¾…æ©Ÿã‚¹ãƒ¬ãƒƒãƒ‰ */
+DWORD WINAPI SendThread(void *);	/* é€ä¿¡ã‚¹ãƒ¬ãƒƒãƒ‰ */
+DWORD WINAPI RecvThread(void *);	/* å—ä¿¡ã‚¹ãƒ¬ãƒƒãƒ‰ */
 #ifdef SUPPORT_NTLM
-BOOL AuthNTLM(LPTELNET_STRUCT);	/* NTLM”FØ */
+BOOL AuthNTLM(LPTELNET_STRUCT);	/* NTLMèªè¨¼ */
 #endif
-void Usage(HANDLE, LPTELNET_STRUCT, BOOL);	/* g—p•û–@ */
+void Usage(HANDLE, LPTELNET_STRUCT, BOOL);	/* ä½¿ç”¨æ–¹æ³• */
 
 /******************************************************************************
 * Function CtrlHandle
@@ -401,9 +401,9 @@ t_recv(SOCKET s, char FAR * buf, int len, int flags)
 BOOL
 AuthNTLM(LPTELNET_STRUCT lpts)
 {
-	LONG ret;					/* –ß‚è’l */
-	U_CHAR c1, c2;				/* óM•¶š */
-	BOOL enable = FALSE;		/* ‰Â”\‚© */
+	LONG ret;					/* æˆ»ã‚Šå€¤ */
+	U_CHAR c1, c2;				/* å—ä¿¡æ–‡å­— */
+	BOOL enable = FALSE;		/* å¯èƒ½ã‹ */
 	PSecurityFunctionTable(*pInit) (void);
 	SECURITY_STATUS sStat;
 	PSecPkgInfo pkgInfo;
@@ -688,8 +688,8 @@ AuthNTLM(LPTELNET_STRUCT lpts)
 SOCKET
 GetListenSocket(USHORT port)
 {
-	SOCKET sock_lstn;			/* ‘Ò‹@ƒ\ƒPƒbƒg */
-	SOCKADDR_IN addr_lstn;		/* ‘Ò‹@ƒAƒhƒŒƒX */
+	SOCKET sock_lstn;			/* å¾…æ©Ÿã‚½ã‚±ãƒƒãƒˆ */
+	SOCKADDR_IN addr_lstn;		/* å¾…æ©Ÿã‚¢ãƒ‰ãƒ¬ã‚¹ */
 
 	sock_lstn = socket(AF_INET, SOCK_STREAM, PF_UNSPEC);
 	if (sock_lstn == INVALID_SOCKET)
@@ -722,29 +722,29 @@ GetListenSocket(USHORT port)
 DWORD WINAPI
 LstnThread(void *param)
 {
-	LPTELNET_STRUCT lpts;		/* ’ÊM—p“à•”\‘¢‘Ì */
-	TELNET_STRUCT new_ts;		/* ’ÊM—p“à•”\‘¢‘Ì */
-	U_CHAR temp[256];			/* ”Ä—p•¶š—ñ       */
-	LPSTR alist;				/* ƒAƒhƒŒƒXƒŠƒXƒg   */
-	LPSTR plist;				/* ƒ|[ƒgƒŠƒXƒg     */
-	SOCKET sock_lstn;			/* ‘Ò‹@ƒ\ƒPƒbƒg     */
-	SOCKET sock_data;			/* ƒf[ƒ^ƒ\ƒPƒbƒg   */
-	SOCKADDR_IN addr_lstn;		/* ‘Ò‹@ƒAƒhƒŒƒX     */
-	SOCKADDR_IN addr_temp;		/* ŒğŠ·—pƒAƒhƒŒƒX   */
-	LONG ret;					/* API–ß’l          */
-	fd_set fdsetr, fdsetw, fdsete;	/* ƒ\ƒPƒbƒgó‘Ô     */
-	TIMEVAL timeout = { 0, 10000 };	/* ƒ^ƒCƒ€ƒAƒEƒg     */
+	LPTELNET_STRUCT lpts;		/* é€šä¿¡ç”¨å†…éƒ¨æ§‹é€ ä½“ */
+	TELNET_STRUCT new_ts;		/* é€šä¿¡ç”¨å†…éƒ¨æ§‹é€ ä½“ */
+	U_CHAR temp[256];			/* æ±ç”¨æ–‡å­—åˆ—       */
+	LPSTR alist;				/* ã‚¢ãƒ‰ãƒ¬ã‚¹ãƒªã‚¹ãƒˆ   */
+	LPSTR plist;				/* ãƒãƒ¼ãƒˆãƒªã‚¹ãƒˆ     */
+	SOCKET sock_lstn;			/* å¾…æ©Ÿã‚½ã‚±ãƒƒãƒˆ     */
+	SOCKET sock_data;			/* ãƒ‡ãƒ¼ã‚¿ã‚½ã‚±ãƒƒãƒˆ   */
+	SOCKADDR_IN addr_lstn;		/* å¾…æ©Ÿã‚¢ãƒ‰ãƒ¬ã‚¹     */
+	SOCKADDR_IN addr_temp;		/* äº¤æ›ç”¨ã‚¢ãƒ‰ãƒ¬ã‚¹   */
+	LONG ret;					/* APIæˆ»å€¤          */
+	fd_set fdsetr, fdsetw, fdsete;	/* ã‚½ã‚±ãƒƒãƒˆçŠ¶æ…‹     */
+	TIMEVAL timeout = { 0, 10000 };	/* ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ     */
 
-	/* ’ÊM—p“à•”\‘¢‘Ì‚ğæ“¾ */
+	/* é€šä¿¡ç”¨å†…éƒ¨æ§‹é€ ä½“ã‚’å–å¾— */
 	lpts = (LPTELNET_STRUCT) param;
 	if (lpts == NULL)
 		return 0;
 
 	memcpy(&new_ts, lpts, sizeof(TELNET_STRUCT));
 
-	/* ƒT[ƒoƒ|[ƒg‚ª‚ ‚é‚È‚ç‚ÎV‚µ‚­‘Ò‹@ƒ\ƒPƒbƒg‚ğ€”õ‚·‚é */
+	/* ã‚µãƒ¼ãƒãƒãƒ¼ãƒˆãŒã‚ã‚‹ãªã‚‰ã°æ–°ã—ãå¾…æ©Ÿã‚½ã‚±ãƒƒãƒˆã‚’æº–å‚™ã™ã‚‹ */
 
-	/* ‚È‚¯‚ê‚Î‚©‚ç‚Ì‘Ò‹@ƒ\ƒPƒbƒg‚ğ€”õ‚·‚é */
+	/* ãªã‘ã‚Œã°ã‹ã‚‰ã®å¾…æ©Ÿã‚½ã‚±ãƒƒãƒˆã‚’æº–å‚™ã™ã‚‹ */
 	if (new_ts.serv_port)
 	{
 		sock_lstn = GetListenSocket(new_ts.serv_port);
@@ -755,26 +755,26 @@ LstnThread(void *param)
 
 	if (sock_lstn == INVALID_SOCKET)
 	{
-		strcpy(temp, "‘Ò‹@ƒ\ƒPƒbƒg‚ªì¬‚Å‚«‚Ü‚¹‚ñ\n");
+		strcpy(temp, "å¾…æ©Ÿã‚½ã‚±ãƒƒãƒˆãŒä½œæˆã§ãã¾ã›ã‚“\n");
 		WriteFile(lpts->stdo, temp, strlen(temp), &ret, NULL);
 		return 0;
 	}
 
-	/* ‘Ò‹@ƒ\ƒPƒbƒg‚ğ€”õ‚ÌƒAƒhƒŒƒX‚ğæ“¾‚·‚é */
+	/* å¾…æ©Ÿã‚½ã‚±ãƒƒãƒˆã‚’æº–å‚™ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ */
 	ret = sizeof(SOCKADDR);
 	if (getsockname(sock_lstn, (LPSOCKADDR) & addr_lstn, (int *)&ret)
 		== SOCKET_ERROR)
 	{
 		shutdown(sock_lstn, SD_BOTH);
 		closesocket(sock_lstn);
-		strcpy(temp, "‘Ò‹@ƒ\ƒPƒbƒg‚ª€”õ‚Å‚«‚Ü‚¹‚ñ\n");
+		strcpy(temp, "å¾…æ©Ÿã‚½ã‚±ãƒƒãƒˆãŒæº–å‚™ã§ãã¾ã›ã‚“\n");
 		WriteFile(lpts->stdo, temp, strlen(temp), &ret, NULL);
 		return 0;
 	}
 
-	/* ƒT[ƒoƒ|[ƒg‚ª‚ ‚é‚È‚ç‚ÎƒAƒhƒŒƒX‚ğƒ[ƒJƒ‹ƒzƒXƒg‚Éİ’è‚·‚é */
+	/* ã‚µãƒ¼ãƒãƒãƒ¼ãƒˆãŒã‚ã‚‹ãªã‚‰ã°ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆã«è¨­å®šã™ã‚‹ */
 
-	/* ‚È‚¯‚ê‚ÎŒ»İg—p’†‚Ì‘Î˜bƒ\ƒPƒbƒg‚ÌƒAƒhƒŒƒX‚ğæ“¾‚·‚é */
+	/* ãªã‘ã‚Œã°ç¾åœ¨ä½¿ç”¨ä¸­ã®å¯¾è©±ã‚½ã‚±ãƒƒãƒˆã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ */
 	if (new_ts.serv_port)
 	{
 		char hostname[256];
@@ -791,13 +791,13 @@ LstnThread(void *param)
 		{
 			shutdown(sock_lstn, SD_BOTH);
 			closesocket(sock_lstn);
-			strcpy(temp, "‘Ò‹@ƒ\ƒPƒbƒg‚ª€”õ‚Å‚«‚Ü‚¹‚ñ\n");
+			strcpy(temp, "å¾…æ©Ÿã‚½ã‚±ãƒƒãƒˆãŒæº–å‚™ã§ãã¾ã›ã‚“\n");
 			WriteFile(lpts->stdo, temp, strlen(temp), &ret, NULL);
 			return 0;
 		}
 	}
 
-	/* ƒAƒhƒŒƒX‚Æƒ|[ƒg”Ô†‚ğ•\¦‚·‚é */
+	/* ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ãƒãƒ¼ãƒˆç•ªå·ã‚’è¡¨ç¤ºã™ã‚‹ */
 	alist = (char *)&addr_temp.sin_addr;
 	plist = (char *)&addr_lstn.sin_port;
 	wsprintf(temp, "PORT %d,%d,%d,%d,%d,%d\n",
@@ -812,7 +812,7 @@ LstnThread(void *param)
 		t_send(new_ts.sock, temp, strlen(temp), 0);
 	}
 
-	/* ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚ÌÚ‘±‚ğ‘Ò‚Â */
+	/* ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®æ¥ç¶šã‚’å¾…ã¤ */
 	FD_ZERO(&fdsetw);
 	FD_ZERO(&fdsete);
 	for (;;)
@@ -830,7 +830,7 @@ LstnThread(void *param)
 	}
 	Sleep(200);
 
-	/* ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚ÌÚ‘±‚ğ‘Ò‚Â */
+	/* ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®æ¥ç¶šã‚’å¾…ã¤ */
 	FD_ZERO(&fdsetw);
 	FD_ZERO(&fdsete);
 	for (;;)
@@ -855,12 +855,12 @@ LstnThread(void *param)
 		ret = sizeof(SOCKADDR);
 		sock_data = accept(sock_lstn, (LPSOCKADDR) & addr_lstn, (int *)&ret);
 
-		/* ƒT[ƒoƒ|[ƒg‚ª‚ ‚é‚È‚ç‚ÎƒNƒ‰ƒCƒAƒ“ƒgƒ\ƒPƒbƒg‚Æ‘Î˜b‚³‚¹‚é */
+		/* ã‚µãƒ¼ãƒãƒãƒ¼ãƒˆãŒã‚ã‚‹ãªã‚‰ã°ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚½ã‚±ãƒƒãƒˆã¨å¯¾è©±ã•ã›ã‚‹ */
 		new_ts.sock = sock_data;
 		if (new_ts.serv_port)
 			lpts->sock = sock_data;
 
-		/* Œã‚Ìˆ—‚ÍóMƒXƒŒƒbƒh‚É”C‚¹‚é */
+		/* å¾Œã®å‡¦ç†ã¯å—ä¿¡ã‚¹ãƒ¬ãƒƒãƒ‰ã«ä»»ã›ã‚‹ */
 		RecvThread(&new_ts);
 	}
 	lpts->lock = FALSE;
@@ -874,40 +874,40 @@ LstnThread(void *param)
 DWORD WINAPI
 SendThread(void *param)
 {
-	LPTELNET_STRUCT lpts;		/* ’ÊM—p“à•”\‘¢‘Ì */
-	LONG ret;					/* –ß‚è’l           */
-	SOCKET sock;				/* ƒ\ƒPƒbƒg         */
-	INPUT_RECORD ir;			/* “ü—ÍƒŒƒR[ƒh     */
+	LPTELNET_STRUCT lpts;		/* é€šä¿¡ç”¨å†…éƒ¨æ§‹é€ ä½“ */
+	LONG ret;					/* æˆ»ã‚Šå€¤           */
+	SOCKET sock;				/* ã‚½ã‚±ãƒƒãƒˆ         */
+	INPUT_RECORD ir;			/* å…¥åŠ›ãƒ¬ã‚³ãƒ¼ãƒ‰     */
 #ifdef SUPPORT_JPNK
-	INT lstmode = KANJI_NONE;	/* ‘O‰ñ‚ÌŠ¿ší•Ê   */
-	U_CHAR c[2];				/* Š¿šƒR[ƒh       */
-	U_CHAR lstbyte = 0;			/* ‘O‰ñ‚ÌƒoƒCƒg     */
+	INT lstmode = KANJI_NONE;	/* å‰å›ã®æ¼¢å­—ç¨®åˆ¥   */
+	U_CHAR c[2];				/* æ¼¢å­—ã‚³ãƒ¼ãƒ‰       */
+	U_CHAR lstbyte = 0;			/* å‰å›ã®ãƒã‚¤ãƒˆ     */
 #endif
-	U_CHAR curbyte = 0;			/* Œ»İ‚ÌƒoƒCƒg     */
-	U_CHAR sbuf[16];			/* §ŒäM†         */
-	WORD vkey;					/* ‰¼‘zƒL[ƒR[ƒh   */
-	DWORD ctrl;					/* ƒRƒ“ƒgƒ[ƒ‹ƒL[ */
-	BOOL loop = TRUE;			/* ƒ‹[ƒvƒtƒ‰ƒO     */
-	CONSOLE_SCREEN_BUFFER_INFO csbi_now;	/* ’[––ó‘Ô         */
+	U_CHAR curbyte = 0;			/* ç¾åœ¨ã®ãƒã‚¤ãƒˆ     */
+	U_CHAR sbuf[16];			/* åˆ¶å¾¡ä¿¡å·         */
+	WORD vkey;					/* ä»®æƒ³ã‚­ãƒ¼ã‚³ãƒ¼ãƒ‰   */
+	DWORD ctrl;					/* ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚­ãƒ¼ */
+	BOOL loop = TRUE;			/* ãƒ«ãƒ¼ãƒ—ãƒ•ãƒ©ã‚°     */
+	CONSOLE_SCREEN_BUFFER_INFO csbi_now;	/* ç«¯æœ«çŠ¶æ…‹         */
 #ifdef SUPPORT_NAWS
-	INT w, h;					/* ’[––c‰¡         */
-	SMALL_RECT old_rct = {		/* ”Ä—p”ÍˆÍ•Ï”     */
+	INT w, h;					/* ç«¯æœ«ç¸¦æ¨ª         */
+	SMALL_RECT old_rct = {		/* æ±ç”¨ç¯„å›²å¤‰æ•°     */
 		-1, -1, -1, -1
 	};
 #endif
 #ifdef SUPPORT_GPMP
-	DWORD lstbutton = -1;		/* ‘O‰ñ‚Ìƒ{ƒ^ƒ“     */
-	COORD lstcoord = {			/* ‘O‰ñ‚ÌˆÊ’u       */
+	DWORD lstbutton = -1;		/* å‰å›ã®ãƒœã‚¿ãƒ³     */
+	COORD lstcoord = {			/* å‰å›ã®ä½ç½®       */
 		-1, -1
 	};
 #endif
-	HANDLE hThread = NULL;		/* ƒXƒŒƒbƒhƒnƒ“ƒhƒ‹ */
-	DWORD ThreadID = 0;			/* ƒXƒŒƒbƒh‚h‚c     */
-	HANDLE hlpo;				/* ƒwƒ‹ƒv‰æ–Ê       */
-	COORD coord;				/* ”Ä—pˆÊ’u•Ï”     */
+	HANDLE hThread = NULL;		/* ã‚¹ãƒ¬ãƒƒãƒ‰ãƒãƒ³ãƒ‰ãƒ« */
+	DWORD ThreadID = 0;			/* ã‚¹ãƒ¬ãƒƒãƒ‰ï¼©ï¼¤     */
+	HANDLE hlpo;				/* ãƒ˜ãƒ«ãƒ—ç”»é¢       */
+	COORD coord;				/* æ±ç”¨ä½ç½®å¤‰æ•°     */
 	DWORD dwWritten;
 
-	/* ’ÊM—p“à•”\‘¢‘Ì‚ğæ“¾ */
+	/* é€šä¿¡ç”¨å†…éƒ¨æ§‹é€ ä½“ã‚’å–å¾— */
 	lpts = (LPTELNET_STRUCT) param;
 	if (lpts == NULL)
 		ExitThread(0);
@@ -924,7 +924,7 @@ SendThread(void *param)
 		//t_send(lpts->sock, (CHAR *) sbuf, 3, 0);
 	}
 
-	/* ‘—Mƒ‹[ƒv */
+	/* é€ä¿¡ãƒ«ãƒ¼ãƒ— */
 	while (loop)
 	{
 #ifdef SUPPORT_PIPE
@@ -940,7 +940,7 @@ SendThread(void *param)
 		}
 #endif
 
-		/* “ü—Í‚ğƒ`ƒFƒbƒN‚·‚é */
+		/* å…¥åŠ›ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ */
 		ReadConsoleInput(lpts->stdi, &ir, 1, (DWORD *) & ret);
 		if (ret == 0)
 			continue;
@@ -993,7 +993,7 @@ SendThread(void *param)
 			break;
 #endif
 		case KEY_EVENT:
-			/* IME‚Ö‚Ì“ü—Í‚Í—¬‚³‚È‚¢ */
+			/* IMEã¸ã®å…¥åŠ›ã¯æµã•ãªã„ */
 			if ((ir.Event.KeyEvent.uChar.UnicodeChar == 0
 					&& ir.Event.KeyEvent.wVirtualKeyCode == 13)
 				|| !ir.Event.KeyEvent.bKeyDown)
@@ -1014,7 +1014,7 @@ SendThread(void *param)
 				switch (vkey)
 				{
 				case 0x70:
-					/* CTRL-F1 ‚Åƒwƒ‹ƒv */
+					/* CTRL-F1 ã§ãƒ˜ãƒ«ãƒ— */
 					GetConsoleScreenBufferInfo(lpts->stdo, &csbi_now);
 					hlpo =
 						CreateConsoleScreenBuffer(GENERIC_READ |
@@ -1045,7 +1045,7 @@ SendThread(void *param)
 					CloseHandle(hlpo);
 					break;
 				case 0x72:
-					/* CTRL-F3 ‚ÅóMƒ\ƒPƒbƒg‚ğŠJ‚­ */
+					/* CTRL-F3 ã§å—ä¿¡ã‚½ã‚±ãƒƒãƒˆã‚’é–‹ã */
 					if (hThread == NULL)
 					{
 						lpts->serv_port = 0;
@@ -1061,14 +1061,14 @@ SendThread(void *param)
 					}
 					break;
 				case 0x73:
-					/* CTRL-F4 ‚ÅI—¹‚·‚é */
+					/* CTRL-F4 ã§çµ‚äº†ã™ã‚‹ */
 					if (ir.Event.KeyEvent.dwControlKeyState
 						& (LEFT_CTRL_PRESSED | RIGHT_CTRL_PRESSED))
 						loop = FALSE;
 					break;
 #ifdef SUPPORT_JPNK
 				case 0x74:
-					/* CTRL-F5 ‚ÅŠ¿šƒ‚[ƒhØ‘Ö */
+					/* CTRL-F5 ã§æ¼¢å­—ãƒ¢ãƒ¼ãƒ‰åˆ‡æ›¿ */
 					switch (lpts->kanji)
 					{
 					case KANJI_SJIS:
@@ -1089,11 +1089,11 @@ SendThread(void *param)
 					break;
 #endif
 				case 0x75:
-					/* CTRL-F6 ‚Åƒ[ƒJƒ‹ƒGƒR[ */
+					/* CTRL-F6 ã§ãƒ­ãƒ¼ã‚«ãƒ«ã‚¨ã‚³ãƒ¼ */
 					lpts->echo = lpts->echo ? FALSE : TRUE;
 					break;
 				case 0x76:
-					/* CTRL-F7 ‚ÅCRLF‚ğ‘—M */
+					/* CTRL-F7 ã§CRLFã‚’é€ä¿¡ */
 					switch (lpts->line & ~LINE_AUTO)
 					{
 					case LINE_NONE:
@@ -1112,16 +1112,16 @@ SendThread(void *param)
 					break;
 #ifdef SUPPORT_NAWS
 				case 0x77:
-					/* CTRL-F8 ‚ÅNAWS‚ğON/OFF */
+					/* CTRL-F8 ã§NAWSã‚’ON/OFF */
 					lpts->naws = lpts->naws ? NAWS_OFF : NAWS_ON;
 					break;
 #endif
 				case 0x78:
-					/* CTRL-F9 ‚Åƒxƒ‹‚ğON/OFF */
+					/* CTRL-F9 ã§ãƒ™ãƒ«ã‚’ON/OFF */
 					lpts->bell = lpts->bell ? FALSE : TRUE;
 					break;
 				case 0x79:
-					/* CTRL-F10 ‚Åvt100‚ğØ‘Ö */
+					/* CTRL-F10 ã§vt100ã‚’åˆ‡æ›¿ */
 					lpts->vt100 = lpts->vt100 ? FALSE : TRUE;
 					break;
 				}
@@ -1160,7 +1160,7 @@ SendThread(void *param)
 
 				if (curbyte == '\r' || curbyte == '\n')
 				{
-					/* Cr ‚È‚ç‚Î CrLf ‚ğ‘—M‚·‚é */
+					/* Cr ãªã‚‰ã° CrLf ã‚’é€ä¿¡ã™ã‚‹ */
 					switch (lpts->line & ~LINE_AUTO)
 					{
 					case LINE_NONE:
@@ -1284,7 +1284,7 @@ SendThread(void *param)
 					}
 					lstmode = KANJI_NONE;
 #endif
-					/* ‚»‚êˆÈŠO‚È‚ç‚Î‚»‚Ì‚Ü‚Ü ASCII ‚ğ‘—M‚·‚é */
+					/* ãã‚Œä»¥å¤–ãªã‚‰ã°ãã®ã¾ã¾ ASCII ã‚’é€ä¿¡ã™ã‚‹ */
 					t_send(lpts->sock, &curbyte, 1, 0);
 				}
 				if (ret == SOCKET_ERROR)
@@ -1319,43 +1319,43 @@ SendThread(void *param)
 DWORD WINAPI
 RecvThread(void *param)
 {
-	LPTELNET_STRUCT lpts;		/* ’ÊM—p“à•”\‘¢‘Ì */
-	LONG ret = 0;				/* API–ß’l          */
-	U_CHAR c1, c2;				/* óM•¶š         */
+	LPTELNET_STRUCT lpts;		/* é€šä¿¡ç”¨å†…éƒ¨æ§‹é€ ä½“ */
+	LONG ret = 0;				/* APIæˆ»å€¤          */
+	U_CHAR c1, c2;				/* å—ä¿¡æ–‡å­—         */
 #ifdef SUPPORT_JPNK
-	BOOL dbcs = FALSE;			/* Š¿šƒ‚[ƒh       */
+	BOOL dbcs = FALSE;			/* æ¼¢å­—ãƒ¢ãƒ¼ãƒ‰       */
 #endif
-	LPSTR temp;					/* ƒGƒ‰[ƒƒbƒZ[ƒW */
-	U_CHAR sbuf[16];			/* §ŒäM†         */
-	U_CHAR lc = ' ';			/* ‘O‰ñ‚ÌƒLƒƒƒ‰ƒNƒ^ */
-	CONSOLE_SCREEN_BUFFER_INFO csbi_now;	/* Œ»İ‚Ì’[––î•ñ   */
-	CONSOLE_CURSOR_INFO cci_old, cci_new;	/* ƒJ[ƒ\ƒ‹ó‘Ô     */
-	DWORD dwWritten, dwConSize;	/* ”Ä—p•Ï”         */
-	COORD coord = {				/* ”Ä—pˆÊ’u•Ï”     */
+	LPSTR temp;					/* ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ */
+	U_CHAR sbuf[16];			/* åˆ¶å¾¡ä¿¡å·         */
+	U_CHAR lc = ' ';			/* å‰å›ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ */
+	CONSOLE_SCREEN_BUFFER_INFO csbi_now;	/* ç¾åœ¨ã®ç«¯æœ«æƒ…å ±   */
+	CONSOLE_CURSOR_INFO cci_old, cci_new;	/* ã‚«ãƒ¼ã‚½ãƒ«çŠ¶æ…‹     */
+	DWORD dwWritten, dwConSize;	/* æ±ç”¨å¤‰æ•°         */
+	COORD coord = {				/* æ±ç”¨ä½ç½®å¤‰æ•°     */
 		0, 0
 	};
-	INT w, h;					/* ’[––c‰¡         */
-	SMALL_RECT scr_rct = {		/* ƒXƒNƒ[ƒ‹—Ìˆæ   */
+	INT w, h;					/* ç«¯æœ«ç¸¦æ¨ª         */
+	SMALL_RECT scr_rct = {		/* ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«é ˜åŸŸ   */
 		-1, -1, -1, -1
 	};
-	SMALL_RECT mov_rct = {		/* ˆÚ“®—Ìˆæ         */
+	SMALL_RECT mov_rct = {		/* ç§»å‹•é ˜åŸŸ         */
 		-1, -1, -1, -1
 	};
-	CHAR_INFO ci;				/* “h’×‚µó‘Ô       */
-	WORD attr_old, attr_set, attr_new;	/* ’[––Fó‘Ô       */
-	fd_set fdsetr, fdsetw, fdsete;	/* ƒ\ƒPƒbƒgó‘Ô     */
-	TIMEVAL timeout = { 0, 10000 };	/* ƒ^ƒCƒ€ƒAƒEƒg     */
+	CHAR_INFO ci;				/* å¡—æ½°ã—çŠ¶æ…‹       */
+	WORD attr_old, attr_set, attr_new;	/* ç«¯æœ«è‰²çŠ¶æ…‹       */
+	fd_set fdsetr, fdsetw, fdsete;	/* ã‚½ã‚±ãƒƒãƒˆçŠ¶æ…‹     */
+	TIMEVAL timeout = { 0, 10000 };	/* ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ     */
 #ifdef SUPPORT_SWAP
-	HANDLE hswap;				/* ‘ŠŒİ‰æ–Ê         */
-	CONSOLE_SCREEN_BUFFER_INFO csbi_swp;	/* ‘ŠŒİ‰æ–Êî•ñ     */
+	HANDLE hswap;				/* ç›¸äº’ç”»é¢         */
+	CONSOLE_SCREEN_BUFFER_INFO csbi_swp;	/* ç›¸äº’ç”»é¢æƒ…å ±     */
 #endif
-	SMALL_RECT old_rct = {		/* ”Ä—p”ÍˆÍ•Ï”     */
+	SMALL_RECT old_rct = {		/* æ±ç”¨ç¯„å›²å¤‰æ•°     */
 		-1, -1, -1, -1
 	};
 #ifdef SUPPORT_SYMB
-	INT haveSymbol = SYMBOL_NO;	/* ƒVƒ“ƒ{ƒ‹‚Ì—L–³   */
+	INT haveSymbol = SYMBOL_NO;	/* ã‚·ãƒ³ãƒœãƒ«ã®æœ‰ç„¡   */
 #endif
-	BOOL haveEscape = FALSE;	/* ƒGƒXƒP[ƒv‚Ì—L–³ */
+	BOOL haveEscape = FALSE;	/* ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã®æœ‰ç„¡ */
 
 	lpts = (LPTELNET_STRUCT) param;
 	if (lpts == NULL)
@@ -1392,7 +1392,7 @@ RecvThread(void *param)
 	FD_ZERO(&fdsete);
 #endif
 
-	/* óMƒ‹[ƒv */
+	/* å—ä¿¡ãƒ«ãƒ¼ãƒ— */
 	for (;;)
 	{
 #ifdef SUPPORT_NAWS
@@ -1440,7 +1440,7 @@ RecvThread(void *param)
 		else
 			haveEscape = FALSE;
 
-		/* §ŒäM†‚È‚ç‚Î‚»‚ê‚É‘Î‚·‚é‰“š‚ğ‚·‚é */
+		/* åˆ¶å¾¡ä¿¡å·ãªã‚‰ã°ãã‚Œã«å¯¾ã™ã‚‹å¿œç­”ã‚’ã™ã‚‹ */
 		if (c1 == 0xFF)
 		{
 			ret = t_recv(lpts->sock, &c1, 1, 0);
@@ -1549,7 +1549,7 @@ RecvThread(void *param)
 #endif
 					GetConsoleScreenBufferInfo(lpts->stdo, &csbi_now);
 					RESTORE_IME(lpts, csbi_now);
-					/* NAWS ‚Åg—p */
+					/* NAWS ã§ä½¿ç”¨ */
 					if (memcmp(&csbi_now.srWindow, &old_rct,
 							sizeof(SMALL_RECT)))
 					{
@@ -1781,10 +1781,10 @@ RecvThread(void *param)
 #endif
 
 #ifdef SUPPORT_JPNK
-				/* JISƒR[ƒh‚©‚Ç‚¤‚©’²‚×‚é */
+				/* JISã‚³ãƒ¼ãƒ‰ã‹ã©ã†ã‹èª¿ã¹ã‚‹ */
 			if (lpts->kanji == KANJI_JIS7 && c1 == '$')
 			{
-				/* Š¿šƒCƒ“‚È‚ç‚ÎŠ¿šƒ‚[ƒh‚ÖˆÚs‚·‚é */
+				/* æ¼¢å­—ã‚¤ãƒ³ãªã‚‰ã°æ¼¢å­—ãƒ¢ãƒ¼ãƒ‰ã¸ç§»è¡Œã™ã‚‹ */
 				ret = t_recv(lpts->sock, &c2, 1, 0);
 				if (ret <= 0)
 					break;
@@ -1796,7 +1796,7 @@ RecvThread(void *param)
 			}
 			else if (lpts->kanji == KANJI_JIS7 && c1 == '(')
 			{
-				/* Š¿šƒAƒEƒg‚È‚ç‚Î•W€ƒ‚[ƒh‚ÖˆÚs‚·‚é */
+				/* æ¼¢å­—ã‚¢ã‚¦ãƒˆãªã‚‰ã°æ¨™æº–ãƒ¢ãƒ¼ãƒ‰ã¸ç§»è¡Œã™ã‚‹ */
 				ret = t_recv(lpts->sock, &c2, 1, 0);
 				if (ret <= 0)
 					break;
@@ -1808,7 +1808,7 @@ RecvThread(void *param)
 			}
 			else
 #endif
-				/* ƒGƒXƒP[ƒvƒV[ƒPƒ“ƒX‚È‚ç‚ÎƒRƒ“ƒ\[ƒ‹ˆ—‚ğs‚¤ */
+				/* ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ãªã‚‰ã°ã‚³ãƒ³ã‚½ãƒ¼ãƒ«å‡¦ç†ã‚’è¡Œã† */
 			if (c1 == '>' || c1 == '7' || c1 == '8' || c1 == '=' || c1 == '~')
 			{
 				continue;
@@ -2692,7 +2692,7 @@ RecvThread(void *param)
 					coord, &ci);
 			}
 #ifdef SUPPORT_JPNK
-			/* Š¿šƒ‚[ƒh‚È‚ç‚ÎŸ‚Ì•¶š‚ğæ“¾‚µ‚ÄSJIS‚É•ÏŠ·‚·‚é */
+			/* æ¼¢å­—ãƒ¢ãƒ¼ãƒ‰ãªã‚‰ã°æ¬¡ã®æ–‡å­—ã‚’å–å¾—ã—ã¦SJISã«å¤‰æ›ã™ã‚‹ */
 			if (dbcs)
 			{
 				if ((lc & 0x80) == 0)
@@ -2863,7 +2863,7 @@ RecvThread(void *param)
 			}
 			else
 			{
-				/* ‚»‚êˆÈŠO‚È‚ç‚Î‚»‚Ì‚Ü‚Ü•W€o—Í‚Ö‘‚«‚Ş */
+				/* ãã‚Œä»¥å¤–ãªã‚‰ã°ãã®ã¾ã¾æ¨™æº–å‡ºåŠ›ã¸æ›¸ãè¾¼ã‚€ */
 				WriteFile(lpts->stdo, &c1, 1, (DWORD *) & ret, NULL);
 #ifdef SUPPORT_JPNK
 				if (lpts->kanji != KANJI_JIS7)
@@ -2913,11 +2913,11 @@ RecvThread(void *param)
 	if (ret <= 0)
 	{
 
-		/* ƒzƒXƒg‚©‚ç‚ÌØ’fˆ— */
+		/* ãƒ›ã‚¹ãƒˆã‹ã‚‰ã®åˆ‡æ–­å‡¦ç† */
 		if (lpts->sock != INVALID_SOCKET)
-			temp = "\nƒzƒXƒg‚©‚çØ’f‚³‚ê‚Ü‚µ‚½\n";
+			temp = "\nãƒ›ã‚¹ãƒˆã‹ã‚‰åˆ‡æ–­ã•ã‚Œã¾ã—ãŸ\n";
 		else
-			temp = "\n‹­§Ø’f‚µ‚Ü‚µ‚½\n";
+			temp = "\nå¼·åˆ¶åˆ‡æ–­ã—ã¾ã—ãŸ\n";
 		WriteFile(lpts->stdo, temp, strlen(temp), (DWORD *) & ret, NULL);
 	}
 
@@ -2925,7 +2925,7 @@ RecvThread(void *param)
 	AuthNTLM(NULL);
 #endif
 
-	/* ƒ\ƒPƒbƒg‚ğØ’f‚·‚é */
+	/* ã‚½ã‚±ãƒƒãƒˆã‚’åˆ‡æ–­ã™ã‚‹ */
 	shutdown(lpts->sock, SD_BOTH);
 	closesocket(lpts->sock);
 	lpts->sock = INVALID_SOCKET;
@@ -2938,43 +2938,43 @@ RecvThread(void *param)
 void
 Usage(HANDLE stdo, LPTELNET_STRUCT lpts, BOOL mode)
 {
-	DWORD ret;					/* –ß‚è’l */
+	DWORD ret;					/* æˆ»ã‚Šå€¤ */
 	CHAR *author =
-		"sTelNet : Small Telnet Client by ‚Ü‚Á‚Â‚ñ            \n"
-		"g—p–@: [ƒIƒvƒVƒ‡ƒ“] [ƒzƒXƒg] [ƒ|[ƒg]               \n"
+		"sTelNet : Small Telnet Client by ã¾ã£ã¤ã‚“            \n"
+		"ä½¿ç”¨æ³•: [ã‚ªãƒ—ã‚·ãƒ§ãƒ³] [ãƒ›ã‚¹ãƒˆ] [ãƒãƒ¼ãƒˆ]               \n"
 		"-----------------------------------------------------\n";
-	CHAR *usages = "      ƒzƒXƒg     : ƒAƒhƒŒƒX‚à‚µ‚­‚Í–¼‘O              \n"
+	CHAR *usages = "      ãƒ›ã‚¹ãƒˆ     : ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚‚ã—ãã¯åå‰              \n"
 #ifdef SUPPORT_SERV
-		"                   (\"-\" ‚ÅƒT[ƒo‚Æ‚µ‚Ä“®ì)        \n"
+		"                   (\"-\" ã§ã‚µãƒ¼ãƒã¨ã—ã¦å‹•ä½œ)        \n"
 #endif
-		"      ƒ|[ƒg     : ƒ|[ƒg”Ô†‚à‚µ‚­‚Íƒ|[ƒg–¼        \n"
-		"                   (‹K’è’l 23)                       \n"
+		"      ãƒãƒ¼ãƒˆ     : ãƒãƒ¼ãƒˆç•ªå·ã‚‚ã—ãã¯ãƒãƒ¼ãƒˆå        \n"
+		"                   (è¦å®šå€¤ 23)                       \n"
 		"-----------------------------------------------------\n"
 #ifdef SUPPORT_JPNK
-		"        -kanji=[sjis|jis7|eucj] ‘—óM‚Ég—p‚·‚éŠ¿š \n"
+		"        -kanji=[sjis|jis7|eucj] é€å—ä¿¡ã«ä½¿ç”¨ã™ã‚‹æ¼¢å­— \n"
 #endif
-		"        -line=[auto|cr|lf|crlf] ‰üsƒR[ƒh           \n"
-		"        -echo=[on|off]          ƒ[ƒJƒ‹ƒGƒR[       \n"
+		"        -line=[auto|cr|lf|crlf] æ”¹è¡Œã‚³ãƒ¼ãƒ‰           \n"
+		"        -echo=[on|off]          ãƒ­ãƒ¼ã‚«ãƒ«ã‚¨ã‚³ãƒ¼       \n"
 #ifdef SUPPORT_NAWS
-		"        -naws=[auto|on|off]     ƒEƒBƒ“ƒhƒE‰Â•Ï       \n"
+		"        -naws=[auto|on|off]     ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å¯å¤‰       \n"
 #endif
-		"        -term=[’[–––¼]          ’[–––¼(‹K’è’l kterm) \n";
+		"        -term=[ç«¯æœ«å]          ç«¯æœ«å(è¦å®šå€¤ kterm) \n";
 	CHAR *keyhlp =
 #ifdef __GNUC__
-		"      CTRL-F1  : ƒwƒ‹ƒv•\\¦\n"
-		"      CTRL-F3  : ‘Ò‹@ƒ\\ƒPƒbƒgì¬\n"
+		"      CTRL-F1  : ãƒ˜ãƒ«ãƒ—è¡¨\ç¤º\n"
+		"      CTRL-F3  : å¾…æ©Ÿã‚½\ã‚±ãƒƒãƒˆä½œæˆ\n"
 #else
-		"      CTRL-F1  : ƒwƒ‹ƒv•\¦\n" "      CTRL-F3  : ‘Ò‹@ƒ\ƒPƒbƒgì¬\n"
+		"      CTRL-F1  : ãƒ˜ãƒ«ãƒ—è¡¨ç¤º\n" "      CTRL-F3  : å¾…æ©Ÿã‚½ã‚±ãƒƒãƒˆä½œæˆ\n"
 #endif
-		"      CTRL-F4  : ‹­§I—¹\n"
-		"      CTRL-F5  : Š¿šƒR[ƒhØ‘Ö\n"
-		"      CTRL-F6  : ƒ[ƒJƒ‹ƒGƒR[Ø‘Ö\n"
-		"      CTRL-F7  : ‰üsƒR[ƒhØ‘Ö\n"
-		"      CTRL-F8  : NAWSØ‘Ö\n"
-		"      CTRL-F9  : ƒxƒ‹Ø‘Ö\n"
-		"      CTRL-F10 : ƒL[Ø‘Ö\n"
+		"      CTRL-F4  : å¼·åˆ¶çµ‚äº†\n"
+		"      CTRL-F5  : æ¼¢å­—ã‚³ãƒ¼ãƒ‰åˆ‡æ›¿\n"
+		"      CTRL-F6  : ãƒ­ãƒ¼ã‚«ãƒ«ã‚¨ã‚³ãƒ¼åˆ‡æ›¿\n"
+		"      CTRL-F7  : æ”¹è¡Œã‚³ãƒ¼ãƒ‰åˆ‡æ›¿\n"
+		"      CTRL-F8  : NAWSåˆ‡æ›¿\n"
+		"      CTRL-F9  : ãƒ™ãƒ«åˆ‡æ›¿\n"
+		"      CTRL-F10 : ã‚­ãƒ¼åˆ‡æ›¿\n"
 		"-----------------------------------------------------\n";
-	/* g—p–@‚ğ•\¦‚·‚é */
+	/* ä½¿ç”¨æ³•ã‚’è¡¨ç¤ºã™ã‚‹ */
 	WriteFile(stdo, author, strlen(author), &ret, NULL);
 	if (mode)
 		WriteFile(stdo, usages, strlen(usages), &ret, NULL);
@@ -2982,20 +2982,20 @@ Usage(HANDLE stdo, LPTELNET_STRUCT lpts, BOOL mode)
 	{
 		CHAR temp[256];
 		WriteFile(stdo, keyhlp, strlen(keyhlp), &ret, NULL);
-		strcpy(temp, "Š¿šƒR[ƒh     : ");
+		strcpy(temp, "æ¼¢å­—ã‚³ãƒ¼ãƒ‰     : ");
 		for (ret = 0; js[ret].key != KANJI_NONE; ret++)
 			if (lpts->kanji == js[ret].key)
 				strcat(temp, js[ret].name);
 		strcat(temp, "\n");
 		WriteFile(stdo, temp, strlen(temp), &ret, NULL);
-		strcpy(temp, "ƒ[ƒJƒ‹ƒGƒR[ : ");
+		strcpy(temp, "ãƒ­ãƒ¼ã‚«ãƒ«ã‚¨ã‚³ãƒ¼ : ");
 		if (lpts->echo)
 			strcat(temp, "on");
 		else
 			strcat(temp, "off");
 		strcat(temp, "\n");
 		WriteFile(stdo, temp, strlen(temp), &ret, NULL);
-		strcpy(temp, "‰üsƒR[ƒh     : ");
+		strcpy(temp, "æ”¹è¡Œã‚³ãƒ¼ãƒ‰     : ");
 		switch (lpts->line & ~LINE_AUTO)
 		{
 		case LINE_NONE:
@@ -3028,7 +3028,7 @@ Usage(HANDLE stdo, LPTELNET_STRUCT lpts, BOOL mode)
 		}
 		strcat(temp, "\n");
 		WriteFile(stdo, temp, strlen(temp), &ret, NULL);
-		strcpy(temp, "ƒxƒ‹           : ");
+		strcpy(temp, "ãƒ™ãƒ«           : ");
 		if (lpts->bell)
 			strcat(temp, "on");
 		else
@@ -3044,33 +3044,33 @@ Usage(HANDLE stdo, LPTELNET_STRUCT lpts, BOOL mode)
 int
 main(int argc, char *argv[])
 {
-	WORD wVerReq;				/* winsock ƒo[ƒWƒ‡ƒ“î•ñ */
-	WSADATA wsaData;			/* winsock ‰Šú‰»ƒf[ƒ^   */
+	WORD wVerReq;				/* winsock ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ± */
+	WSADATA wsaData;			/* winsock åˆæœŸåŒ–ãƒ‡ãƒ¼ã‚¿   */
 
-	DWORD dwMode;				/* ƒ‚[ƒh                 */
-	DWORD dwModeOld;			/* ƒ‚[ƒh                 */
-	LPSTR serv_name = NULL;		/* ƒT[ƒo–¼               */
-	LPSTR port_name = NULL;		/* ƒ|[ƒg–¼               */
-	USHORT nport;				/* ƒ|[ƒg–¼               */
-	LPHOSTENT shost;			/* ƒzƒXƒgƒGƒ“ƒgƒŠ         */
-	LPSERVENT sserv;			/* ƒT[ƒoƒGƒ“ƒgƒŠ         */
-	SOCKADDR_IN server;			/* ƒT[ƒoƒAƒhƒŒƒX         */
-	CHAR term[256];				/* ’[–––¼                 */
-	CHAR temp[256];				/* ƒGƒ‰[ƒƒbƒZ[ƒW       */
-	DWORD ret;					/* API–ß‚è’l              */
-	TELNET_STRUCT ts;			/* ’ÊM—p“à•”\‘¢‘Ì       */
-	INT count;					/* ”Ä—p•Ï”               */
-	INT argn = 0;				/* ˆø”—p•Ï”             */
-	HANDLE hThread;				/* ƒXƒŒƒbƒhƒnƒ“ƒhƒ‹       */
-	DWORD ThreadID = 0;			/* ƒXƒŒƒbƒh‚h‚c           */
+	DWORD dwMode;				/* ãƒ¢ãƒ¼ãƒ‰                 */
+	DWORD dwModeOld;			/* ãƒ¢ãƒ¼ãƒ‰                 */
+	LPSTR serv_name = NULL;		/* ã‚µãƒ¼ãƒå               */
+	LPSTR port_name = NULL;		/* ãƒãƒ¼ãƒˆå               */
+	USHORT nport;				/* ãƒãƒ¼ãƒˆå               */
+	LPHOSTENT shost;			/* ãƒ›ã‚¹ãƒˆã‚¨ãƒ³ãƒˆãƒª         */
+	LPSERVENT sserv;			/* ã‚µãƒ¼ãƒã‚¨ãƒ³ãƒˆãƒª         */
+	SOCKADDR_IN server;			/* ã‚µãƒ¼ãƒã‚¢ãƒ‰ãƒ¬ã‚¹         */
+	CHAR term[256];				/* ç«¯æœ«å                 */
+	CHAR temp[256];				/* ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸       */
+	DWORD ret;					/* APIæˆ»ã‚Šå€¤              */
+	TELNET_STRUCT ts;			/* é€šä¿¡ç”¨å†…éƒ¨æ§‹é€ ä½“       */
+	INT count;					/* æ±ç”¨å¤‰æ•°               */
+	INT argn = 0;				/* å¼•æ•°ç”¨å¤‰æ•°             */
+	HANDLE hThread;				/* ã‚¹ãƒ¬ãƒƒãƒ‰ãƒãƒ³ãƒ‰ãƒ«       */
+	DWORD ThreadID = 0;			/* ã‚¹ãƒ¬ãƒƒãƒ‰ï¼©ï¼¤           */
 #ifdef SUPPORT_ICON
-	HWND hWnd = NULL;			/* ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹     */
-	HICON hIcon = NULL, hIconS, hIconB;	/* ƒAƒCƒRƒ“ƒnƒ“ƒhƒ‹       */
-	GETCONSOLEWINDOWPROC pfnGetConsoleWindow;	/* ŠÖ”ƒ|ƒCƒ“ƒ^           */
+	HWND hWnd = NULL;			/* ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«     */
+	HICON hIcon = NULL, hIconS, hIconB;	/* ã‚¢ã‚¤ã‚³ãƒ³ãƒãƒ³ãƒ‰ãƒ«       */
+	GETCONSOLEWINDOWPROC pfnGetConsoleWindow;	/* é–¢æ•°ãƒã‚¤ãƒ³ã‚¿           */
 #endif
-	CHAR title[256];			/* ƒEƒBƒ“ƒhƒEƒ^ƒCƒgƒ‹     */
+	CHAR title[256];			/* ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¿ã‚¤ãƒˆãƒ«     */
 
-	/* ’ÊM—p“à•”\‘¢‘Ì‚ğ‰Šú‰»‚·‚é */
+	/* é€šä¿¡ç”¨å†…éƒ¨æ§‹é€ ä½“ã‚’åˆæœŸåŒ–ã™ã‚‹ */
 	memset(&ts, 0x00, sizeof(TELNET_STRUCT));
 
 #ifdef SUPPORT_JPNK
@@ -3081,7 +3081,7 @@ main(int argc, char *argv[])
 	ts.ntlm = TRUE;
 	ts.naws = NAWS_AUTO;
 
-	/* •W€“üo—Íƒnƒ“ƒhƒ‹‚ğæ“¾‚·‚é */
+	/* æ¨™æº–å…¥å‡ºåŠ›ãƒãƒ³ãƒ‰ãƒ«ã‚’å–å¾—ã™ã‚‹ */
 	ts.stdi = GetStdHandle(STD_INPUT_HANDLE);
 	ts.stdo = GetStdHandle(STD_OUTPUT_HANDLE);
 	ts.alto = ts.stdo;
@@ -3093,7 +3093,7 @@ main(int argc, char *argv[])
 
 	memset(term, 0, sizeof(term));
 
-	/* ˆø”ƒ`ƒFƒbƒN */
+	/* å¼•æ•°ãƒã‚§ãƒƒã‚¯ */
 	for (count = 1; count < argc; count++)
 	{
 		if (argv[count][0] == '-' && argv[count][1] != '\0')
@@ -3200,7 +3200,7 @@ main(int argc, char *argv[])
 			{
 			case 0:
 				serv_name = argv[count];
-				port_name = "23";	/* •W€ TELNET ƒ|[ƒg‚ğg—p‚·‚é */
+				port_name = "23";	/* æ¨™æº– TELNET ãƒãƒ¼ãƒˆã‚’ä½¿ç”¨ã™ã‚‹ */
 				break;
 #ifdef SUPPORT_SERV
 			case 1:
@@ -3244,7 +3244,7 @@ main(int argc, char *argv[])
 #endif
 	}
 
-	/* “ü—Íƒ‚[ƒh‚ğ“ü—Í‰Â”\‚É!•ÏX‚·‚é */
+	/* å…¥åŠ›ãƒ¢ãƒ¼ãƒ‰ã‚’å…¥åŠ›å¯èƒ½ã«!å¤‰æ›´ã™ã‚‹ */
 #ifdef SUPPORT_PIPE
 	if (GetFileType(ts.stdi) != FILE_TYPE_PIPE)
 #endif
@@ -3254,9 +3254,9 @@ main(int argc, char *argv[])
 
 		GetConsoleMode(ts.stdi, &dwModeOld);
 		dwMode = dwModeOld;
-		dwMode &= ~ENABLE_LINE_INPUT;	/* ƒ‰ƒCƒ““ü—Í‚Íg‚í‚È‚¢ */
-		dwMode &= ~ENABLE_ECHO_INPUT;	/* ƒGƒR[“ü—Í‚Íg‚í‚È‚¢ */
-		dwMode &= ~ENABLE_PROCESSED_INPUT;	/* CTRL-C“ü—Í‚Íg‚í‚È‚¢ */
+		dwMode &= ~ENABLE_LINE_INPUT;	/* ãƒ©ã‚¤ãƒ³å…¥åŠ›ã¯ä½¿ã‚ãªã„ */
+		dwMode &= ~ENABLE_ECHO_INPUT;	/* ã‚¨ã‚³ãƒ¼å…¥åŠ›ã¯ä½¿ã‚ãªã„ */
+		dwMode &= ~ENABLE_PROCESSED_INPUT;	/* CTRL-Cå…¥åŠ›ã¯ä½¿ã‚ãªã„ */
 #ifdef SUPPORT_NAWS
 		if (ts.naws)
 			dwMode |= ENABLE_WINDOW_INPUT;
@@ -3315,7 +3315,7 @@ main(int argc, char *argv[])
 
 	}
 
-	/* winsock ‘Oˆ—‚ğ‚·‚é */
+	/* winsock å‰å‡¦ç†ã‚’ã™ã‚‹ */
 #ifdef SUPPORT_WSK2
 	wVerReq = MAKEWORD(2, 0);
 #else
@@ -3327,42 +3327,42 @@ main(int argc, char *argv[])
 	if (strcmp(serv_name, "-"))
 #endif
 	{
-		/* ƒ\ƒPƒbƒg‚ğì¬‚·‚é */
+		/* ã‚½ã‚±ãƒƒãƒˆã‚’ä½œæˆã™ã‚‹ */
 		ts.sock = socket(AF_INET, SOCK_STREAM, 0);
 		if (ts.sock == INVALID_SOCKET)
 		{
 #ifdef __GNUC__
-			strcpy(temp, "ƒ\\ƒPƒbƒg‚ªŠm•Û‚Å‚«‚Ü‚¹‚ñ\n");
+			strcpy(temp, "ã‚½\ã‚±ãƒƒãƒˆãŒç¢ºä¿ã§ãã¾ã›ã‚“\n");
 #else
-			strcpy(temp, "ƒ\ƒPƒbƒg‚ªŠm•Û‚Å‚«‚Ü‚¹‚ñ\n");
+			strcpy(temp, "ã‚½ã‚±ãƒƒãƒˆãŒç¢ºä¿ã§ãã¾ã›ã‚“\n");
 #endif
 			WriteFile(ts.stdo, temp, strlen(temp), &ret, NULL);
 			goto ErrHandle;
 		}
 
-		/* ƒzƒXƒgƒGƒ“ƒgƒŠ‚ğæ“¾‚·‚é */
+		/* ãƒ›ã‚¹ãƒˆã‚¨ãƒ³ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ */
 		shost = gethostbyname(serv_name);
 		if (shost == NULL)
 		{
 			closesocket(ts.sock);
-			strcpy(temp, "ƒzƒXƒg–¼‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: ");
+			strcpy(temp, "ãƒ›ã‚¹ãƒˆåãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: ");
 			strcat(temp, serv_name);
 			strcat(temp, "\n");
 			WriteFile(ts.stdo, temp, strlen(temp), &ret, NULL);
 			goto ErrHandle;
 		}
 
-		/* ƒ|[ƒg‚ğæ“¾‚·‚é */
+		/* ãƒãƒ¼ãƒˆã‚’å–å¾—ã™ã‚‹ */
 		ts.serv_port = (USHORT) atoi(port_name);
 		nport = htons(ts.serv_port);
 		if (nport == 0)
 		{
-			/* ƒ|[ƒg–¼‚ğ‰ğŒˆ‚·‚é */
+			/* ãƒãƒ¼ãƒˆåã‚’è§£æ±ºã™ã‚‹ */
 			sserv = getservbyname(port_name, NULL);
 			if (sserv == NULL)
 			{
 				closesocket(ts.sock);
-				strcpy(temp, "ƒ|[ƒg–¼‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: ");
+				strcpy(temp, "ãƒãƒ¼ãƒˆåãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: ");
 				strcat(temp, serv_name);
 				strcat(temp, "\n");
 				WriteFile(ts.stdo, temp, strlen(temp), &ret, NULL);
@@ -3376,12 +3376,12 @@ main(int argc, char *argv[])
 		server.sin_port = nport;
 		memmove((char *)&server.sin_addr, shost->h_addr, shost->h_length);
 
-		/* ƒ\ƒPƒbƒg‚ğÚ‘±‚·‚é */
+		/* ã‚½ã‚±ãƒƒãƒˆã‚’æ¥ç¶šã™ã‚‹ */
 		if (connect(ts.sock, (LPSOCKADDR) & server, sizeof(server))
 			== SOCKET_ERROR)
 		{
 			closesocket(ts.sock);
-			strcpy(temp, "Ú‘±‚Å‚«‚Ü‚¹‚ñ: ");
+			strcpy(temp, "æ¥ç¶šã§ãã¾ã›ã‚“: ");
 			strcat(temp, serv_name);
 			strcat(temp, ":");
 			strcat(temp, port_name);
@@ -3390,16 +3390,16 @@ main(int argc, char *argv[])
 			goto ErrHandle;
 		}
 
-		/* ƒuƒŒƒCƒN‚ğ—LŒø‚É‚·‚é */
+		/* ãƒ–ãƒ¬ã‚¤ã‚¯ã‚’æœ‰åŠ¹ã«ã™ã‚‹ */
 		ret = TRUE;
 		setsockopt(ts.sock, (int)SOL_SOCKET, SO_OOBINLINE, (char FAR *)&ret,
 			sizeof(BOOL));
 
-		/* ‘—MƒXƒŒƒbƒh‚ğ‹N“®‚·‚é */
+		/* é€ä¿¡ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’èµ·å‹•ã™ã‚‹ */
 		hThread = CreateThread(NULL,
 			0, SendThread, (void *)&ts, 0, &ThreadID);
 
-		/* óMƒXƒŒƒbƒh‚ğ‹N“®‚·‚é */
+		/* å—ä¿¡ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’èµ·å‹•ã™ã‚‹ */
 		RecvThread((void *)&ts);
 		CloseHandle(hThread);
 	}
@@ -3408,11 +3408,11 @@ main(int argc, char *argv[])
 	{
 		ts.serv_port = (USHORT) atoi(port_name);
 
-		/* ‘—MƒXƒŒƒbƒh‚ğ‹N“®‚·‚é */
+		/* é€ä¿¡ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’èµ·å‹•ã™ã‚‹ */
 		hThread = CreateThread(NULL,
 			0, SendThread, (void *)&ts, 0, &ThreadID);
 
-		/* ‘Ò‹@ƒXƒŒƒbƒh‚ğ‹N“®‚·‚é */
+		/* å¾…æ©Ÿã‚¹ãƒ¬ãƒƒãƒ‰ã‚’èµ·å‹•ã™ã‚‹ */
 		LstnThread((void *)&ts);
 		if (WaitForSingleObject(hThread, 0) == WAIT_TIMEOUT)
 			TerminateThread(hThread, 0);
@@ -3444,7 +3444,7 @@ main(int argc, char *argv[])
 	if (ts.alto != ts.stdo)
 		CloseHandle(ts.alto);
 
-	/* winsock Œãˆ—‚ğ‚·‚é */
+	/* winsock å¾Œå‡¦ç†ã‚’ã™ã‚‹ */
 	WSACleanup();
 
 	return GetLastError();
