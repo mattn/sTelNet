@@ -1,6 +1,5 @@
 /******************************************************************************
  * sTelNet - Small Telnet Program For WIN32
- *                                              2001/06/22 Created By まっつん
  ******************************************************************************/
 
 //#define DEBUG_TXT             /* 出力文字のデバッグ   */
@@ -2913,9 +2912,9 @@ RecvThread(void *param)
 
 	/* ホストからの切断処理 */
 	if (lpts->sock != INVALID_SOCKET)
-	  temp = "\nホストから切断されました\n";
+	  temp = "\nConnection is closed by host\n";
 	else
-	  temp = "\n強制切断しました\n";
+	  temp = "\nExited forcely\n";
 	WriteFile(lpts->stdo, temp, strlen(temp), (DWORD *) & ret, NULL);
   }
 
@@ -2938,35 +2937,36 @@ Usage(HANDLE stdo, LPTELNET_STRUCT lpts, BOOL mode)
 {
   DWORD ret;					/* 戻り値 */
   CHAR *author =
-	"sTelNet : Small Telnet Client by まっつん            \n"
-	"使用法: [オプション] [ホスト] [ポート]               \n"
-	"-----------------------------------------------------\n";
-  CHAR *usages = "      ホスト     : アドレスもしくは名前              \n"
+	"sTelNet : Small Telnet Client                                 \n"
+	"Usage: [options] [host] [port]                                \n"
+	"-----------------------------------------------------         \n";
+  CHAR *usages =
+	"      host       : name or address                            \n"
 #ifdef SUPPORT_SERV
-	"                   (\"-\" でサーバとして動作)        \n"
+	"                   (\"-\" to listen as server)                \n"
 #endif
-	"      ポート     : ポート番号もしくはポート名        \n"
-	"                   (規定値 23)                       \n"
-	"-----------------------------------------------------\n"
+	"      port        : port number or name                       \n"
+	"                   (default 23)                               \n"
+	"-----------------------------------------------------         \n"
 #ifdef SUPPORT_JPNK
-	"        -kanji=[sjis|jis7|eucj] 送受信に使用する漢字 \n"
+	"        -kanji=[sjis|jis7|eucj] Kanji code                    \n"
 #endif
-	"        -line=[auto|cr|lf|crlf] 改行コード           \n"
-	"        -echo=[on|off]          ローカルエコー       \n"
+	"        -line=[auto|cr|lf|crlf] Line code                     \n"
+	"        -echo=[on|off]          Local echo                    \n"
 #ifdef SUPPORT_NAWS
-	"        -naws=[auto|on|off]     ウィンドウ可変       \n"
+	"        -naws=[auto|on|off]     NAWS                          \n"
 #endif
-	"        -term=[端末名]          端末名(規定値 kterm) \n";
+	"        -term=[name]            Terminal Name(default: kterm) \n";
   CHAR *keyhlp =
-	"      CTRL-F1  : ヘルプ表示\n"
-	"      CTRL-F3  : 待機ソケット作成\n"
-	"      CTRL-F4  : 強制終了\n"
-	"      CTRL-F5  : 漢字コード切替\n"
-	"      CTRL-F6  : ローカルエコー切替\n"
-	"      CTRL-F7  : 改行コード切替\n"
-	"      CTRL-F8  : NAWS切替\n"
-	"      CTRL-F9  : ベル切替\n"
-	"      CTRL-F10 : キー切替\n"
+	"      CTRL-F1  : Show this help\n"
+	"      CTRL-F3  : Create listening socket\n"
+	"      CTRL-F4  : Force quit\n"
+	"      CTRL-F5  : Rotate kanji code\n"
+	"      CTRL-F6  : Switch local echo\n"
+	"      CTRL-F7  : Swtich line code\n"
+	"      CTRL-F8  : Swtich NAWS\n"
+	"      CTRL-F9  : Swtich bell flush\n"
+	"      CTRL-F10 : Swtich terminal to vt100\n"
 	"-----------------------------------------------------\n";
   /* 使用法を表示する */
   WriteFile(stdo, author, strlen(author), &ret, NULL);
@@ -2976,20 +2976,20 @@ Usage(HANDLE stdo, LPTELNET_STRUCT lpts, BOOL mode)
   {
 	CHAR temp[256];
 	WriteFile(stdo, keyhlp, strlen(keyhlp), &ret, NULL);
-	strcpy(temp, "漢字コード     : ");
+	strcpy(temp, "Kanji code     : ");
 	for (ret = 0; js[ret].key != KANJI_NONE; ret++)
 	  if (lpts->kanji == js[ret].key)
 		strcat(temp, js[ret].name);
 	strcat(temp, "\n");
 	WriteFile(stdo, temp, strlen(temp), &ret, NULL);
-	strcpy(temp, "ローカルエコー : ");
+	strcpy(temp, "Local echo     : ");
 	if (lpts->echo)
 	  strcat(temp, "on");
 	else
 	  strcat(temp, "off");
 	strcat(temp, "\n");
 	WriteFile(stdo, temp, strlen(temp), &ret, NULL);
-	strcpy(temp, "改行コード     : ");
+	strcpy(temp, "Line code      : ");
 	switch (lpts->line & ~LINE_AUTO)
 	{
 	case LINE_NONE:
@@ -3325,7 +3325,7 @@ main(int argc, char *argv[])
 	ts.sock = socket(AF_INET, SOCK_STREAM, 0);
 	if (ts.sock == INVALID_SOCKET)
 	{
-	  strcpy(temp, "ソケットが確保できません\n");
+	  strcpy(temp, "Can't create socket\n");
 	  WriteFile(ts.stdo, temp, strlen(temp), &ret, NULL);
 	  goto ErrHandle;
 	}
@@ -3335,7 +3335,7 @@ main(int argc, char *argv[])
 	if (shost == NULL)
 	{
 	  closesocket(ts.sock);
-	  strcpy(temp, "ホスト名が見つかりません: ");
+	  strcpy(temp, "Can't resolve host name: ");
 	  strcat(temp, serv_name);
 	  strcat(temp, "\n");
 	  WriteFile(ts.stdo, temp, strlen(temp), &ret, NULL);
@@ -3352,7 +3352,7 @@ main(int argc, char *argv[])
 	  if (sserv == NULL)
 	  {
 		closesocket(ts.sock);
-		strcpy(temp, "ポート名が見つかりません: ");
+		strcpy(temp, "Can't resolve port name: ");
 		strcat(temp, serv_name);
 		strcat(temp, "\n");
 		WriteFile(ts.stdo, temp, strlen(temp), &ret, NULL);
@@ -3371,7 +3371,7 @@ main(int argc, char *argv[])
 	  == SOCKET_ERROR)
 	{
 	  closesocket(ts.sock);
-	  strcpy(temp, "接続できません: ");
+	  strcpy(temp, "Can't connect to host: ");
 	  strcat(temp, serv_name);
 	  strcat(temp, ":");
 	  strcat(temp, port_name);
