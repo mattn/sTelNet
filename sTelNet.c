@@ -2377,7 +2377,6 @@ RecvThread(void *param)
                     default:
                     case 0:
                       dwConSize = w * (h - coord.Y) - coord.X;
-                      coord.X = 0;
                       break;
                     case 1:
                       dwConSize = w * coord.Y + coord.X;
